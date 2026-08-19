@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { App as AntdApp, ConfigProvider, theme } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import { HashRouter } from "react-router-dom";
+import AppErrorBoundary from "./components/AppErrorBoundary";
 import { AppRoutes } from "./router/routes";
 import { useAppStore } from "./store/appStore";
 import "./App.css";
@@ -45,9 +46,11 @@ function App() {
       }}
     >
       <AntdApp>
-        <HashRouter>
-          <AppRoutes />
-        </HashRouter>
+        <AppErrorBoundary>
+          <HashRouter>
+            <AppRoutes />
+          </HashRouter>
+        </AppErrorBoundary>
       </AntdApp>
     </ConfigProvider>
   );

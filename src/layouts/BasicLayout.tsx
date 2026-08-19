@@ -166,7 +166,7 @@ export default function BasicLayout() {
 
       <Drawer
         placement="left"
-        width={260}
+        size={260}
         open={isMobile && mobileOpen}
         onClose={() => setMobileOpen(false)}
         styles={{ body: { padding: 0, background: "#132b2a" }, header: { display: "none" } }}
