@@ -6,7 +6,7 @@ import {
   TeamOutlined,
   TrophyOutlined,
 } from "@ant-design/icons";
-import { Alert, Button, Card, Col, List, Row, Skeleton, Statistic, Tag } from "antd";
+import { Alert, Button, Card, Col, Row, Skeleton, Statistic, Tag } from "antd";
 import { BarChart, PieChart } from "echarts/charts";
 import { GridComponent, LegendComponent, TooltipComponent } from "echarts/components";
 import * as echarts from "echarts/core";
@@ -93,14 +93,18 @@ export default function Dashboard() {
         </Row>
 
         <Card title="最新操作" className="dashboard-row">
-          <List
-            dataSource={data?.latestLogs}
-            renderItem={(item) => (
-              <List.Item extra={<Tag>{item.createdAt}</Tag>}>
-                <List.Item.Meta avatar={<span className="log-dot" />} title={item.action} description={`操作人：${item.operatorName}`} />
-              </List.Item>
-            )}
-          />
+          <ul className="activity-list">
+            {data?.latestLogs.map((item) => (
+              <li key={item.id}>
+                <span className="log-dot" />
+                <div className="activity-content">
+                  <strong>{item.action}</strong>
+                  <span>操作人：{item.operatorName}</span>
+                </div>
+                <Tag className="activity-time">{item.createdAt}</Tag>
+              </li>
+            ))}
+          </ul>
         </Card>
       </Skeleton>
     </PageContainer>

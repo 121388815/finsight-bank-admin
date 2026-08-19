@@ -307,12 +307,55 @@
 
 .log-dot {
   display: block;
+  flex: 0 0 auto;
   width: 9px;
   height: 9px;
-  margin-top: 8px;
   border: 2px solid #96d2c8;
   border-radius: 50%;
   background: var(--brand);
+}
+
+.activity-list,
+.risk-evidence ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.activity-list li {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.activity-list li:last-child,
+.risk-evidence li:last-child {
+  border-bottom: 0;
+}
+
+.activity-content {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.activity-content strong {
+  color: var(--text);
+}
+
+.activity-content span {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.activity-time {
+  flex: 0 0 auto;
+  margin-inline-end: 0;
 }
 
 .risk-score {
@@ -430,6 +473,43 @@
   margin: 0;
   color: var(--text-secondary);
   line-height: 1.75;
+}
+
+.risk-evidence {
+  margin-top: 16px;
+}
+
+.risk-evidence h3 {
+  margin: 0;
+  padding-bottom: 10px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.risk-evidence li {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.risk-evidence li > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.risk-evidence li strong {
+  color: var(--text);
+}
+
+.risk-evidence-value {
+  color: var(--text-secondary);
+  font-size: 13px;
 }
 
 .role-card {

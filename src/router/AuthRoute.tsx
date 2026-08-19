@@ -19,7 +19,7 @@ export function AuthRoute({ children, permission }: AuthRouteProps) {
   if (!initialized) {
     return (
       <div className="route-loading">
-        <Spin size="large" tip="正在恢复登录状态" />
+        <Spin size="large" description="正在恢复登录状态" />
       </div>
     );
   }

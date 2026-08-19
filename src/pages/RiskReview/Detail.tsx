@@ -13,7 +13,6 @@ import {
   Card,
   Descriptions,
   Form,
-  List,
   Modal,
   Skeleton,
   Space,
@@ -155,11 +154,20 @@ export default function RiskReviewDetail() {
                   <div className="risk-report">
                     <Alert type={report.level === "high" ? "error" : report.level === "medium" ? "warning" : "success"} showIcon message={report.summary} description={report.suggestion} />
                     <Space wrap className="risk-tags">{report.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}</Space>
-                    <List
-                      header={<strong>风险证据</strong>}
-                      dataSource={report.evidence}
-                      renderItem={(item) => <List.Item extra={<StatusTag status={item.level} />}><List.Item.Meta title={item.label} description={item.value} /></List.Item>}
-                    />
+                    <section className="risk-evidence">
+                      <h3>风险证据</h3>
+                      <ul>
+                        {report.evidence.map((item) => (
+                          <li key={`${item.label}-${item.value}`}>
+                            <div>
+                              <strong>{item.label}</strong>
+                              <span className="risk-evidence-value">{item.value}</span>
+                            </div>
+                            <StatusTag status={item.level} />
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
                     <div className="report-time">生成时间：{report.generatedAt}</div>
                   </div>
                 ) : (
